@@ -7,6 +7,7 @@
     <router-link to="/products">Productos</router-link>|
     <router-link to="/details">Detalles</router-link>|
     <router-link to="/invoices">Facturas</router-link>|
+    <router-link to="/paymodes">Modos de Pago</router-link>|
   </nav>
   <router-view/>
 </template>

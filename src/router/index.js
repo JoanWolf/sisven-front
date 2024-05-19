@@ -15,6 +15,9 @@ import NewDetail from '../components/details/NewDetail.vue';
 import Invoices from '../views/invoices.vue';
 import EditarInvoice from '../components/invoices/EditarInvoice.vue';
 import NewInvoice from '../components/invoices/NewInvoice.vue';
+import Paymodes from '../views/paymodes.vue';
+import EditarPaymode from '../components/paymodes/EditarPaymode.vue';
+import NewPaymode from '../components/paymodes/NewPaymode.vue';
 
 const routes = [
   {
@@ -103,6 +106,21 @@ const routes = [
   path: '/add-invoice/',
   name: 'NewInvoice',
   component: NewInvoice
+},
+{
+  path: '/paymodes',
+  name: 'Paymodes',
+  component: Paymodes
+},
+{
+  path: '/editar-paymode/:id',
+  name: 'EditarPaymode',
+  component: EditarPaymode
+},
+{
+  path: '/add-paymode/',
+  name: 'NewPaymode',
+  component: NewPaymode
 },
 
 

@@ -3,6 +3,9 @@ import HomeView from '../views/HomeView.vue'
 import customers from '../views/customers.vue'
 import EditarCustomer from '../components/Customers/EditarCustomer.vue'
 import NewCustomer from '../components/Customers/NewCustomer.vue'
+import Categories from '../views/categories.vue';
+import EditarCategorie from '../components/categories/EditarCategorie.vue';
+import NewCategorie from '../components/categories/NewCategorie.vue';
 
 const routes = [
   {
@@ -31,7 +34,24 @@ const routes = [
   {path: '/add-customer/',
   name: 'NewCustomer',
   component: NewCustomer
-}
+},
+{
+  path: '/categories',
+  name: 'Categories',
+  component: Categories
+},
+{
+  path: '/editar-categorie/:id',
+  name: 'EditarCategorie',
+  component: EditarCategorie
+},
+{
+  path: '/add-categorie/',
+  name: 'NewCategorie',
+  component: NewCategorie
+},
+
+
 ]
 
 const router = createRouter({

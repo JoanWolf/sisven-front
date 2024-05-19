@@ -4,6 +4,9 @@
     <router-link to="/about">About</router-link>|
     <router-link to="/customers">Customers</router-link>|
     <router-link to="/categories">Categorias</router-link>|
+    <router-link to="/products">Productos</router-link>|
+    <router-link to="/details">Detalles</router-link>|
+    <router-link to="/invoices">Facturas</router-link>|
   </nav>
   <router-view/>
 </template>

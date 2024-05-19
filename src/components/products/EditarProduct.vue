@@ -1,0 +1,111 @@
+<template>
+        <div class="container">
+        <div class="col-12 text-center">
+            <div class="alert alert-success" role="alert">
+                <h1 class="mb-0" style="color: green;">Editar Producto</h1>
+            </div>
+        </div>
+        <p></p>
+        <p></p>
+        <form @submit.prevent="updateProduct">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-4" style="margin-right: 435px;">
+                    <div class="mb-3">
+                        <label for="codigo" class="form-label">Id</label>
+                        <div class="input-group">
+                            <div class="input-group-text"><font-awesome-icon icon="tag"/></div>
+                            <input type="text" class="form-control" id="id" aria-describedby="codigoHelp" name="id" disabled="disabled" v-model='product.id'>
+                        </div>
+                        <!-- <div id="codigoHelp" class="form-text">Codigo</div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-text"><font-awesome-icon icon="building"/></div>
+                            <input type="text" class="form-control" id="name" aria-describedby="codigoHelp" name="name" v-model='product.name'>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="codigo" class="form-label">precio</label>
+                        <div class="input-group">
+                            <div class="input-group-text"><font-awesome-icon icon="bank"/></div>
+                            <input type="number" class="form-control" id="price" aria-describedby="codigoHelp" name="price" v-model='product.price'>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="codigo" class="form-label">cantidad</label>
+                        <div class="input-group">
+                            <div class="input-group-text"><font-awesome-icon icon="bank"/></div>
+                            <input type="number" class="form-control" id="stock" aria-describedby="codigoHelp" name="stock" v-model='product.stock'>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="codigo" class="form-label">categorias </label>
+                    <div class="input-group">
+                        <select class="form-select" v-model="product.category_id">
+                            <option v-for="categorie in categories" v-bind:value="categorie.id">{{ categorie.name }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+                <button class="btn btn-primary" type="submit">Actualizar</button>
+                <button class="btn btn-secondary mx-2" @click="cancelar">Cancelar</button>
+        </form>
+    </div>
+</template>
+
+<script>
+import axios from 'axios'
+import Swal from 'sweetalert2'
+export default {
+    name: 'EditarProduct',
+    data() {
+        return {
+            product: {
+                id: 0,
+                name: '',
+                price: '',
+                stock: '',
+                category_id: 0,
+            },categories:[]
+        }
+    },
+    methods:{
+        cancelar(){
+            this.$router.push({name:'Products'})
+        },
+        async updateProduct(){
+            const res = await axios.put(`http://127.0.0.1:8000/api/products/${this.product.id}`, this.product)
+            if(res.status == 200){
+                this.$router.push({name: 'Products'})
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Product has been updated',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        }
+    },
+    mounted() {
+        this.product.id = this.$route.params.id;
+        console.log(`http://127.0.0.1:8000/api/products/${this.product.id}`)
+        axios
+            .get(`http://127.0.0.1:8000/api/products/${this.product.id}`)
+            .then(response => {this.product = response.data.product;this.categories = response.data.categories})
+    },
+}
+</script>

@@ -6,6 +6,15 @@ import NewCustomer from '../components/Customers/NewCustomer.vue'
 import Categories from '../views/categories.vue';
 import EditarCategorie from '../components/categories/EditarCategorie.vue';
 import NewCategorie from '../components/categories/NewCategorie.vue';
+import Products from '../views/products.vue';
+import EditarProduct from '../components/products/EditarProduct.vue';
+import NewProduct from '../components/products/NewProduct.vue';
+import Details from '../views/details.vue';
+import EditarDetail from '../components/details/EditarDetail.vue';
+import NewDetail from '../components/details/NewDetail.vue';
+import Invoices from '../views/invoices.vue';
+import EditarInvoice from '../components/invoices/EditarInvoice.vue';
+import NewInvoice from '../components/invoices/NewInvoice.vue';
 
 const routes = [
   {
@@ -49,6 +58,51 @@ const routes = [
   path: '/add-categorie/',
   name: 'NewCategorie',
   component: NewCategorie
+},
+{
+  path: '/products',
+  name: 'Products',
+  component: Products
+},
+{
+  path: '/editar-product/:id',
+  name: 'EditarProduct',
+  component: EditarProduct
+},
+{
+  path: '/add-product/',
+  name: 'NewProduct',
+  component: NewProduct
+},
+{
+  path: '/details',
+  name: 'Details',
+  component: Details
+},
+{
+  path: '/editar-detail/:id',
+  name: 'EditarDetail',
+  component: EditarDetail
+},
+{
+  path: '/add-detail/',
+  name: 'NewDetail',
+  component: NewDetail
+},
+{
+  path: '/invoices',
+  name: 'Invoices',
+  component: Invoices
+},
+{
+  path: '/editar-invoice/:id',
+  name: 'EditarInvoice',
+  component: EditarInvoice
+},
+{
+  path: '/add-invoice/',
+  name: 'NewInvoice',
+  component: NewInvoice
 },
 
 
